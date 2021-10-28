@@ -66,15 +66,15 @@ struct SegTree {
 
     void set(int ind, const T &t, int x, int l, int r) {
         if (l == r) {
-            tree[ind].init(t, l, r);
+            tree[x].init(t, l, r);
             return;
         }
         int m = (l + r) >> 1;
         if (ind <= m) {
-            set(ind, t, 2 * x + 1, l, m);
+            set(x, t, 2 * x + 1, l, m);
         } else {
-            set(ind, t, 2 * x + 2, m + 1, r);
+            set(x, t, 2 * x + 2, m + 1, r);
         }
-        tree[ind].update(tree[2 * ind + 1], tree[2 * ind + 2], l, r);
+        tree[x].update(tree[2 * x + 1], tree[2 * x + 2], l, r);
     }
 };

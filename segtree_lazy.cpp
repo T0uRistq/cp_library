@@ -86,10 +86,10 @@ struct SegTree {
 
     void set(int i, const T &t, int x, int l, int r) {
         if (l != r) {
-            tree[i].push(tree[i * 2 + 1], tree[i * 2 + 2], l, r);
+            tree[x].push(tree[x * 2 + 1], tree[x * 2 + 2], l, r);
         }
         if (l == r) {
-            tree[i].init(t, l, r);
+            tree[x].init(t, l, r);
             return;
         }
         int m = (l + r) >> 1;
@@ -98,7 +98,7 @@ struct SegTree {
         } else {
             set(i, t, 2 * x + 2, m + 1, r);
         }
-        tree[i].update(tree[2 * i + 1], tree[2 * i + 2], l, r);
+        tree[x].update(tree[2 * x + 1], tree[2 * x + 2], l, r);
     }
 
     template<typename M>
