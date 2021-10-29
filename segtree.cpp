@@ -71,9 +71,9 @@ struct SegTree {
         }
         int m = (l + r) >> 1;
         if (ind <= m) {
-            set(x, t, 2 * x + 1, l, m);
+            set(ind, t, 2 * x + 1, l, m);
         } else {
-            set(x, t, 2 * x + 2, m + 1, r);
+            set(ind, t, 2 * x + 2, m + 1, r);
         }
         tree[x].update(tree[2 * x + 1], tree[2 * x + 2], l, r);
     }
