@@ -1,6 +1,6 @@
 template<typename T>
 struct FenwickTree {
-    vector<T> bit; // binary indexed tree
+    vector<T> bit;
     int n;
 
     FenwickTree(int n = 0) : n(n) {

@@ -1,6 +1,6 @@
 template<typename T>
 struct FenwickTree2D {
-    vector<vector<T>> bit; // binary indexed tree
+    vector<vector<T>> bit;
     int n, m;
 
     FenwickTree2D(int n = 0, int m = 0) : n(n), m(m) {
@@ -14,7 +14,7 @@ struct FenwickTree2D {
     }
 
     T sum(int x, int y) {
-    int ret = 0;
+    T ret = 0;
     for (int i = x; i >= 0; i = (i & (i + 1)) - 1)
         for (int j = y; j >= 0; j = (j & (j + 1)) - 1)
             ret += bit[i][j];

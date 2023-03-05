@@ -1,32 +1,23 @@
-#include <bits/stdc++.h>
-using namespace std;
+vector<bool> is_prime;
+vector<int> primes;
 
-constexpr int mod = (int)1e6 - 1;
-bool is_prime[mod];
-vector <int> primes;
-
-void sieve(){
-    for (int i = 2; i < mod; i++){
+void sieve(int n){
+    is_prime.assign(n, false);
+    for (int i = 2; i < n; i++){
         is_prime[i] = true;
     }
-    for (int i = 2; i * i < mod; i++){
+    for (int i = 2; i * i < n; i++){
         if (!is_prime[i]) continue;
-        for (int j = i * i; j < mod; j += i){
+        for (int j = i * i; j < n; j += i){
             is_prime[j] = false;
         }
     }
 }
 
-void gen_primes(){
-    sieve();
-    for (int i = 2; i < mod; i++){
+void gen_primes(int n){
+    sieve(n);
+    primes.clear();
+    for (int i = 2; i < n; i++){
         if (is_prime[i]) primes.push_back(i);
-    }
-}
-
-int main(){
-    gen_primes();
-    for (int i : primes){
-        cout << i << ' ';
     }
 }

@@ -1,13 +1,9 @@
-// one-based impementation of Union-Find structure
-// to make it zero-based remove n++; from constructor (line 6)
-// path compression optimized
 struct DSU {
     vector<int> size;
     vector<int> parent;
     int n;
 
     DSU(int n = 1) : n(n) {
-        n++;
         reset(n);
     }
 
@@ -17,15 +13,15 @@ struct DSU {
         size.assign(n, 1);
     }
 
-    int find_set(int v) {
+    int find(int v) {
         if (v == parent[v])
             return v;
-        return parent[v] = find_set(parent[v]);
+        return parent[v] = find(parent[v]);
     }
 
-    bool union_sets(int a, int b) {
-        a = find_set(a);
-        b = find_set(b);
+    bool unite(int a, int b) {
+        a = find(a);
+        b = find(b);
         if (a == b) return false;
         if (size[a] < size[b]) swap(a, b);
         parent[b] = a;
@@ -34,6 +30,6 @@ struct DSU {
     }
 
     bool check(int u, int v) {
-        return find_set(u) == find_set(v);
+        return find(u) == find(v);
     }
 };

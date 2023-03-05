@@ -57,7 +57,7 @@ struct SegTree {
         }
     }
 
-    // quiries in form 0-indexed [l, r]
+    // queries in 0-indexed [l, r] form
     Item ask(int l, int r) {
         l = max(l, 0); r = min(r, n - 1);
         if (l > r) return Item();
