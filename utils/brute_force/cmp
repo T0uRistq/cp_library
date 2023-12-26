@@ -1,0 +1,6 @@
+#!/bin/bash
+
+./gen > in
+./brute < in > outB
+../main < in > outM
+diff outB outM
